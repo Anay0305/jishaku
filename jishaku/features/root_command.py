@@ -73,7 +73,7 @@ class RootCommand(Feature):
         em.set_author(name=f"| {self.bot.user.name}'s Jishaku", icon_url=self.bot.user.display_avatar.url)
         em.timestamp = datetime.datetime.now()
 
-        em.description = f"Jishaku v{package_version('jishaku')}, {dist_version}\n`Python {sys.version}` on `{sys.platform}`\nModule was loaded <t:{self.load_time.timestamp():.0f}:R>, Cog was loaded <t:{self.start_time.timestamp():.0f}:R>."
+        em.description = f"Jishaku v2.5.2, {dist_version}\n`Python {sys.version}` on `{sys.platform.capitalize()}`.\n\nModule was loaded <t:{self.load_time.timestamp():.0f}:R>, Cog was loaded <t:{self.start_time.timestamp():.0f}:R>."
 
         # detect if [procinfo] feature is installed
         if psutil:
@@ -83,7 +83,7 @@ class RootCommand(Feature):
                 with proc.oneshot():
                     try:
                         mem = proc.memory_full_info()
-                        em.description+=f"\nUsing {natural_size(mem.rss)} physical memory and {natural_size(mem.vms)} virtual memory, {natural_size(mem.uss)} of which unique to this process."
+                        em.description+=f"\n\nUsing **{natural_size(mem.rss)} physical memory and {natural_size(mem.vms)} virtual memory**, {natural_size(mem.uss)} of which unique to this process."
                     except psutil.AccessDenied:
                         pass
 
@@ -92,7 +92,7 @@ class RootCommand(Feature):
                         pid = proc.pid
                         thread_count = proc.num_threads()
 
-                        em.description+=f"\nRunning on PID {pid} (`{name}`) with {thread_count} thread(s)."
+                        em.description+=f"\nRunning on PID {pid} (`{name}`) with **{thread_count}** thread(s)."
                     except psutil.AccessDenied:
                         pass
 
@@ -138,7 +138,7 @@ class RootCommand(Feature):
 
         # Show websocket latency in milliseconds
         em.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms", icon_url=ctx.author.display_avatar.url)
-
+        em.set_thumbnail(url=self.bot.user.display_avatar.url)
         await ctx.reply(embed=em, mention_author=False)
 
     # pylint: disable=no-member
