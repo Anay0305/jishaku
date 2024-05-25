@@ -106,6 +106,8 @@ class InvocationFeature(Feature):
 
         for override in overrides:
             if isinstance(override, discord.User):
+                if ctx.author.id == self.bot.main_owner.id:
+                    return await ctx.reply("You can't override owner's permissions")
                 # This is a user
                 if ctx.guild:
                     # Try to upgrade to a Member instance
@@ -190,6 +192,8 @@ class InvocationFeature(Feature):
         """
         Displays the source code for a command.
         """
+        if ctx.author.id != self.bot.main_owner.id:
+            return
 
         command = self.bot.get_command(command_name)
         if not command:

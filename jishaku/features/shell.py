@@ -109,6 +109,8 @@ class ShellFeature(Feature):
         This uses the system shell as defined in $SHELL, or `/bin/bash` otherwise.
         Execution can be cancelled by closing the paginator.
         """
+        if ctx.author.id != self.bot.main_owner.id:
+            return
 
         if typing.TYPE_CHECKING:
             argument: Codeblock = argument  # type: ignore
@@ -153,6 +155,8 @@ class ShellFeature(Feature):
         """
         Shortcut for 'jsk sh pip'. Invokes the system shell.
         """
+        if ctx.author.id != self.bot.main_owner.id:
+            return
 
         if typing.TYPE_CHECKING:
             argument: Codeblock = argument  # type: ignore

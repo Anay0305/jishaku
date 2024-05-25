@@ -110,6 +110,8 @@ class ManagementFeature(Feature):
         """
         Logs this bot out.
         """
+        if ctx.author.id != self.bot.main_owner.id:
+            return
 
         ellipse_character = "\N{BRAILLE PATTERN DOTS-356}" if Flags.USE_BRAILLE_J else "\N{HORIZONTAL ELLIPSIS}"
 

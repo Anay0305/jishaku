@@ -40,6 +40,8 @@ class FilesystemFeature(Feature):
 
         Lines and linespans are supported by adding '#L12' or '#L12-14' etc to the end of the filename.
         """
+        if ctx.author.id != self.bot.main_owner.id:
+            return
 
         match = self.__cat_line_regex.search(argument)
 
