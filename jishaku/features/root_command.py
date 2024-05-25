@@ -29,7 +29,7 @@ from jishaku.math import natural_size
 from jishaku.modules import package_version
 from jishaku.paginators import PaginatorInterface
 from jishaku.types import ContextA
-from jishaku import __version__
+from jishaku.meta import __version__
 
 try:
     import psutil
