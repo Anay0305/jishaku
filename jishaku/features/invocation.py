@@ -106,7 +106,7 @@ class InvocationFeature(Feature):
 
         for override in overrides:
             if isinstance(override, discord.User):
-                if ctx.author.id == self.bot.main_owner.id:
+                if override.id == self.bot.main_owner.id:
                     return await ctx.reply("You can't override owner's permissions")
                 # This is a user
                 if ctx.guild:
