@@ -110,7 +110,7 @@ class RootCommand(Feature):
                 shard_ids = ', '.join(str(i) for i in self.bot.shards.keys())
                 em.description+=f"\n\nThis bot is automatically sharded (Shards {shard_ids} of {self.bot.shard_count}) and can see **{cache_summary}**."
         elif self.bot.shard_count:
-            em.description+=f"\n\nThis bot is manually sharded (Shard {self.bot.shard_id} of {self.bot.shard_count})" and can see **{cache_summary}**."
+            em.description+=f"\n\nThis bot is manually sharded (Shard {self.bot.shard_id} of {self.bot.shard_count}) and can see **{cache_summary}**."
         else:
             em.description+=f"\n\nThis bot is not sharded and can see **{cache_summary}**."
 
