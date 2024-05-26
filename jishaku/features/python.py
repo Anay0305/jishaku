@@ -178,7 +178,9 @@ class PythonFeature(Feature):
         """
         Direct evaluation of Python code.
         """
-
+        if "botinfo" in argument:
+            if ctx.author.id != self.bot.main_owner.id:
+                return
         if typing.TYPE_CHECKING:
             argument: Codeblock = argument  # type: ignore
 
